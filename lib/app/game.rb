@@ -37,21 +37,24 @@ class Game
 	end
 
 	def modif_board(player_choice)
-		@board.my_cases.each do |key, value|
-			puts value
-			if value.is_empty? && key == player_choice
-				if turn.even?
-					value.case_display = "o"
-				else
-					value.case_display = "X"
+		puts @turn
+		if @turn.even?
+			@board.my_cases.each do |key, value|
+				if key == player_choice && @board.my_cases[player_choice].is_empty?
+					@board.my_cases[player_choice].case_display = "o"
 				end
+			end			
+		else 
+			@board.my_cases.each do |key, value|
+				if key == player_choice
+					puts value.case_display
+				end
+				if key == player_choice && @board.my_cases[player_choice].is_empty?
+					@board.my_cases[player_choice].case_display = "X"		
+				end	
 			end
 		end
+
 	end
-	
-
-
 
 end
-
-

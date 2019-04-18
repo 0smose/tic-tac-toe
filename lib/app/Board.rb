@@ -6,10 +6,9 @@ class Board
 	
 
 	def initialize
-		@board_case = BoardCase.new
-		@my_cases = {"a1" => @board_case, "a2" => @board_case, "a3" => @board_case, 
-			"b1" => @board_case, "b2" => @board_case, "b3" => @board_case, 
-			"c1" => @board_case, "c2" => @board_case, "c3" => @board_case}
+		@my_cases = {"a1" => BoardCase.new, "a2" => BoardCase.new, "a3" => BoardCase.new, 
+			"b1" => BoardCase.new, "b2" => BoardCase.new, "b3" => BoardCase.new, 
+			"c1" => BoardCase.new, "c2" => BoardCase.new, "c3" => BoardCase.new}
 			
 		create_board
 	end
