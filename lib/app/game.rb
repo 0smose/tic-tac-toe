@@ -28,14 +28,14 @@ class Game
 		player_choice = gets.chomp.to_s.downcase
 		
 		menu_choice(player_choice)
-		#h.has_key?("z")   #=> false
+		
 
 	end
 
 	def menu_choice(choice)
 		player_choice = choice
 		@board.my_cases.each do |k, v|
-			if (choice == k) #&& (@board.my_cases[k].is_empty? == false)
+			if (choice == k) 
 					if v.is_empty? 
 					modif_board(player_choice)
 					@turn += 1
@@ -119,7 +119,6 @@ class Game
 	def game_over
 	if victory_player1? == true
 	puts "C'est finiiii ! #{player1.name} a gagné"
-	#system("echo YOU WIN|espeak")
 	elsif victory_player2? == true
 		puts "C'est finiiii ! #{player2.name} a gagné"
 	else puts "Oh shit ! DRAW"

@@ -1,4 +1,5 @@
 require 'bundler'
+require 'espeak'
 Bundler.require
 require_relative 'lib/app/player'
 require_relative 'lib/app/Board'
