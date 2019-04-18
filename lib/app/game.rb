@@ -9,6 +9,8 @@ class Game
 		@turn = 1
 	end
 
+
+
 	def menu
 		puts "salut, dans quelle case veux-tu jouer ?"
 		@board.my_cases.each do |key, value|
@@ -19,42 +21,89 @@ class Game
 		puts "------------------------------"
 		print "> "
 		player_choice = gets.chomp.to_s.downcase
+		
 		menu_choice(player_choice)
+		#h.has_key?("z")   #=> false
+
 	end
 
 	def menu_choice(choice)
 		player_choice = choice
 		@board.my_cases.each do |k, v|
-			if choice == k
-				if v.is_empty? == false
-					puts "nononon, tu peux pas jouer ici bro"
-				else	
+			if (choice == k) #&& (@board.my_cases[k].is_empty? == false)
+					if v.is_empty? 
 					modif_board(player_choice)
 					@turn += 1
-				end
-			end
+					else
+					puts "nononon, tu peux pas jouer ici bro"
+					print ">"
+					player_choice = gets.chomp.to_s.downcase
+					menu_choice(player_choice)
+					end
+			end		
 		end
 	end
 
 	def modif_board(player_choice)
-		puts @turn
+		puts "#{@turn} + coucou"
 		if @turn.even?
 			@board.my_cases.each do |key, value|
-				if key == player_choice && @board.my_cases[player_choice].is_empty?
+				if (key == player_choice) && (@board.my_cases[key].is_empty? == true)
 					@board.my_cases[player_choice].case_display = "o"
 				end
 			end			
 		else 
 			@board.my_cases.each do |key, value|
-				if key == player_choice
-					puts value.case_display
-				end
-				if key == player_choice && @board.my_cases[player_choice].is_empty?
+				if (key == player_choice) && (@board.my_cases[key].is_empty? == true)
 					@board.my_cases[player_choice].case_display = "X"		
 				end	
 			end
 		end
-
 	end
 
+
+	def victory_player1?
+		if ((@board.my_cases["a1"].case_display == "X") && (@board.my_cases["a2"].case_display == "X") && (@board.my_cases["a3"].case_display == "X"))
+			return true
+		elsif ((@board.my_cases["b1"].case_display == "X") && (@board.my_cases["b2"].case_display == "X") && (@board.my_cases["b3"].case_display == "X"))
+		return true
+		elsif ((@board.my_cases["c1"].case_display == "X") && (@board.my_cases["c2"].case_display == "X") && (@board.my_cases["c3"].case_display == "X"))
+		return true
+		elsif ((@board.my_cases["a1"].case_display == "X") && (@board.my_cases["b1"].case_display == "X") && (@board.my_cases["c1"].case_display == "X"))
+		return true
+		elsif ((@board.my_cases["a2"].case_display == "X") && (@board.my_cases["b2"].case_display == "X") && (@board.my_cases["c2"].case_display == "X"))
+		return true
+		elsif ((@board.my_cases["a3"].case_display == "X") && (@board.my_cases["b3"].case_display == "X") && (@board.my_cases["c3"].case_display == "X"))
+		return true
+		elsif ((@board.my_cases["a1"].case_display == "X") && (@board.my_cases["b2"].case_display == "X") && (@board.my_cases["c3"].case_display == "X"))
+		return true
+		elsif((@board.my_cases["c1"].case_display == "X") && (@board.my_cases["b2"].case_display == "X") && (@board.my_cases["a3"].case_display == "X"))
+		return true
+		end
+	end
+
+	def victory_player2?
+			if ((@board.my_cases["a1"].case_display == "o") && (@board.my_cases["a2"].case_display == "o") && (@board.my_cases["a3"].case_display == "o"))
+			return true
+			elsif ((@board.my_cases["b1"].case_display == "o") && (@board.my_cases["b2"].case_display == "o") && (@board.my_cases["b3"].case_display == "o"))
+			return true
+			elsif ((@board.my_cases["c1"].case_display == "o") && (@board.my_cases["c2"].case_display == "o") && (@board.my_cases["c3"].case_display == "o"))
+			return true
+			elsif ((@board.my_cases["a1"].case_display == "o") && (@board.my_cases["b1"].case_display == "o") && (@board.my_cases["c1"].case_display == "o"))
+			return true
+			elsif ((@board.my_cases["a2"].case_display == "o") && (@board.my_cases["b2"].case_display == "o") && (@board.my_cases["c2"].case_display == "o"))
+			return true
+			elsif ((@board.my_cases["a3"].case_display == "o") && (@board.my_cases["b3"].case_display == "o") && (@board.my_cases["c3"].case_display == "o"))
+			return true
+			elsif ((@board.my_cases["a1"].case_display == "o") && (@board.my_cases["b2"].case_display == "o") && (@board.my_cases["c3"].case_display == "o"))
+			return true
+			elsif ((@board.my_cases["c1"].case_display == "o") && (@board.my_cases["b2"].case_display == "o") && (@board.my_cases["a3"].case_display == "o"))
+			return true 
+			end
+	end
+
+
+	def is_still_ongoing?
+
+	end
 end

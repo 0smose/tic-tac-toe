@@ -2,7 +2,6 @@
 class Board
 	attr_accessor :board_case, :my_cases
 	attr_reader :case_separator
-	@@move_count = 0
 	
 
 	def initialize
