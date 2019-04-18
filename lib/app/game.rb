@@ -1,12 +1,13 @@
 
 class Game
-	attr_accessor :player1, :player2, :board, :turn
+	attr_accessor :player1, :player2, :board, :turn, :show
 
 	def initialize(name_player1, name_player2)
 		@player1 = Player.new(name_player1, "X")
 		@player2 = Player.new(name_player2, "o")
 		@board = Board.new
 		@turn = 1
+
 	end
 
 
@@ -45,7 +46,7 @@ class Game
 	end
 
 	def modif_board(player_choice)
-		puts "#{@turn} + coucou"
+		puts "Tour nº#{@turn}"
 		if @turn.even?
 			@board.my_cases.each do |key, value|
 				if (key == player_choice) && (@board.my_cases[key].is_empty? == true)
@@ -104,6 +105,10 @@ class Game
 
 
 	def is_still_ongoing?
+		if (victory_player1? != true) && (victory_player2? != true) && (@turn <= 9)
+			return true
+		else return false
+		end
 
 	end
 end
