@@ -24,17 +24,36 @@ def intro
 
 end	
 
-
+def wanna_play_for_eternity
+	puts "tu veux jouer une autre partie ? Press Y or N"
+	puts "> Y/N"
+	ur_choice_mate = gets.chomp.to_s.upcase
+	if ur_choice_mate == "Y"
+		return perform_2
+	else return "tant pis"
+	end
+end
 
 def perform
 	intro
+
 	my_game = Game.new(@player_1, @player_2)
 	while my_game.is_still_ongoing?
 		my_game.board.show_board
 		my_game.menu
 	end
 	my_game.game_over
+	wanna_play_for_eternity
 end
 
+def perform_2
+	my_game = Game.new(@player_1, @player_2)
+	while my_game.is_still_ongoing?
+		my_game.board.show_board
+		my_game.menu
+	end
+	my_game.game_over
+	wanna_play_for_eternity
+end
 perform
-
+perform_2
