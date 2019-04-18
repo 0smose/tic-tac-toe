@@ -8,7 +8,13 @@ class Player
 	 @symbol = symbol
 	end
 
-	def choice
+
+	def modif_board(player_choice)
+		@my_cases.each do |key, value|
+			if value.is_empty? && key == player_choice
+				value = self.symbol
+			end
+		end
 	end
 
 

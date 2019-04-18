@@ -1,5 +1,5 @@
 class BoardCase
-	attr_accessor :case_display
+	attr_accessor :case_name, :case_display
 
 
 	def initialize

@@ -10,27 +10,26 @@ class Game
 
 	def menu
 		puts "salut, dans quelle case veux-tu jouer ?"
-		@my_cases.each do |key, value|
+		@board.my_cases.each do |key, value|
 			if value.is_empty? 
 				puts key
 			end
 		end
 		puts "------------------------------"
 		print "> "
-		player_choice = gets.chomp.downcase
+		player_choice = gets.chomp.to_s.downcase
 		menu_choice(player_choice)
 	end
 
 	def menu_choice(choice)
-		@my_cases.each do |k, v|
-		if choice == k
-			k.each do |v|
+		@board.my_cases.each do |k, v|
+			if choice == k
 				if v.is_empty? == false
 					puts "nononon, tu peux pas jouer ici bro"
+				else @board.modif_board(choice)
 				end
 			end
 		end
-	end
 	end
 
 
