@@ -6,10 +6,10 @@ require_relative 'lib/app/boardcase'
 require_relative 'lib/app/game'
 #require 'scrapper'
 
-def perform
-my_game = Game.new("caro", "robin")
-my_game.menu
-end
 
-perform
+my_game = Game.new("caro", "robin")
+
+my_game.menu
+
+
 binding.pry

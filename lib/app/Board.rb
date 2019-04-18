@@ -16,7 +16,6 @@ class Board
 
 	def create_board
 		
-
 		@case_separator = "|"
 		puts ""
 		puts ""
@@ -29,6 +28,5 @@ class Board
 		puts ""
 
 	end
-
 
 end
