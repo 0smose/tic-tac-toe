@@ -5,21 +5,37 @@ require_relative 'lib/app/Board'
 require_relative 'lib/app/boardcase'
 require_relative 'lib/app/game'
 require_relative 'lib/views/show'
-#require 'scrapper'
-my_game = Game.new("caro", "robin")
-while my_game.is_still_ongoing?
-
-my_game.board.show_board
-my_game.menu
 
 
+
+def intro
+		# On affiche l'introduction du jeu
+	puts "-------------------------------------------------"
+	puts "|  Bienvenue sur 'LE MODAFUCKING MORPION' !      |"
+	puts "-------------------------------------------------"
+
+	# On demande l'utilisateur son prénom
+	puts "Quel est ton prénom JOUEUR 1 ?"
+	print ">"
+	@player_1 = gets.chomp.to_s
+	puts "Quel est ton prénom JOUEUR 2 ?"
+	print ">"
+	@player_2 = gets.chomp.to_s
+
+end	
+
+
+
+def perform
+	intro
+	my_game = Game.new(@player_1, @player_2)
+	while my_game.is_still_ongoing?
+		my_game.board.show_board
+		my_game.menu
+	end
+	my_game.game_over
 end
 
-if my_game.victory_player1? == true
-puts "#{my_game.player1.name} a gagné"
-#system("echo YOU WIN|espeak")
-elsif my_game.victory_player2? == true
-	puts "#{my_game.player2.name} a gagné"
-else puts "DRAW"
-end
+perform
+
 binding.pry

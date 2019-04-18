@@ -13,7 +13,11 @@ class Game
 
 
 	def menu
-		puts "salut, dans quelle case veux-tu jouer ?"
+		if @turn.even?
+		puts "Salut #{@player2.name}, dans quelle case veux-tu jouer ?"
+		else
+		puts 	"Salut #{@player1.name}, dans quelle case veux-tu jouer ?"
+		end
 		@board.my_cases.each do |key, value|
 			if value.is_empty? 
 				puts key
@@ -111,4 +115,14 @@ class Game
 		end
 
 	end
+
+	def game_over
+	if victory_player1? == true
+	puts "C'est finiiii ! #{player1.name} a gagné"
+	#system("echo YOU WIN|espeak")
+	elsif victory_player2? == true
+		puts "C'est finiiii ! #{player2.name} a gagné"
+	else puts "Oh shit ! DRAW"
+	end
+end
 end
